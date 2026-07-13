@@ -1,5 +1,9 @@
 <?php
 
+use App\Models\Admin;
+use App\Models\User;
+use App\Models\Vendor;
+
 return [
 
     /*
@@ -70,15 +74,15 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\Models\User::class,
+            'model' => User::class,
         ],
         'admins' => [
             'driver' => 'eloquent',
-            'model' => App\Models\Admin::class,
+            'model' => Admin::class,
         ],
         'vendors' => [
             'driver' => 'eloquent',
-            'model' => App\Models\Vendor::class,
+            'model' => Vendor::class,
         ],
     ],
 

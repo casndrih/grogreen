@@ -1,63 +1,60 @@
-# Grogreen: Laravel and Tailwind CSS Small Multi-Vendor Ecommerce Project
+# Grogreen
 
-![Grogreen Logo](logo.svg)
+A small multi-vendor grocery e-commerce platform built with **Laravel 10** and Tailwind CSS. It gives local Micro, Small, and Medium Enterprises (MSMEs) a place to showcase and sell their products online.
 
-Grogreen is a small multi-vendor ecommerce platform built using Laravel and Tailwind CSS. It aims to provide a platform for local Micro, Small, and Medium Enterprises (MSMEs) to showcase and sell their products online.
-
-## Project Overview
-
-Grogreen is a project that was developed during the 2023 Apec App Challenge held in the USA. It is an ongoing project that is continuously being improved and enhanced to meet the needs of local businesses and consumers.
+Originally developed for the 2023 APEC App Challenge. This repository has been professionally maintained and hardened with security and modernization fixes.
 
 ## Features
 
-- User Registration and Authentication: Users can create accounts and log in to the platform.
-- Vendor Management: MSMEs can register as vendors and manage their products, inventory, and orders.
-- Product Catalog: Vendors can create and manage product listings, including images, descriptions, and pricing.
-- Shopping Cart: Customers can add products to their cart and proceed to checkout.
-- Order Management: Vendors can track and manage customer orders, update order status, and generate invoices.
-- Payment Integration: Integration with popular payment gateways to facilitate secure and convenient online transactions.
-- Search and Filtering: Customers can search for products and apply filters to find specific items.
-- Responsive Design: The platform is designed to be responsive and accessible across different devices.
+- **User accounts** — buyers register, log in, manage profile & address.
+- **Vendor management** — MSMEs register as vendors, manage products and orders.
+- **Product catalog** — create & manage listings (image, description, price).
+- **Shopping cart** — add/remove items, then check out.
+- **Order management** — buyers track orders; vendors manage fulfillment.
+- **PayPal integration** — secure checkout via `srmklive/paypal`.
+- **Search & filtering** — find products quickly.
+- **Responsive UI** — Tailwind CSS across devices.
 
-## Installation and Setup
+## Security hardening applied
 
-1. Clone the repository:
-   ```
-   git clone https://github.com/casndrih/grogreen.git
-   ```
+| Area | Fix |
+|------|-----|
+| Auth middleware | `/user`, `/admin`, `/vendor` routes now require `auth` |
+| Login throttling | `/login` limited to 5 attempts/minute |
+| Logout | switched from `GET` to `POST` (CSRF-safe) |
+| Mass assignment | removed `$guarded = []` from `User`/`Vendor`/`Admin`; explicit `$fillable` including `role` |
+| Leaked secret | hardcoded Unsplash API key removed; now read from `UNSPLASH_ACCESS_KEY` |
+| Dependency audit | `composer audit` clean after upgrade |
 
-2. Install project dependencies:
-   ```
-   cd grogreen
-   composer install
-   npm install
-   ```
+## Requirements
 
-3. Configure the database:
-   - Rename the `.env.example` file to `.env`.
-   - Update the database credentials in the `.env` file.
+- PHP `^8.1` (8.2+ recommended)
+- Composer 2
+- MySQL 8 / MariaDB
+- Node.js 18+ (for asset build)
 
-4. Generate the application key:
-   ```
-   php artisan key:generate
-   ```
+## Installation
 
-5. Run database migrations:
-   ```
-   php artisan migrate
-   ```
+```bash
+git clone https://github.com/casndrih/grogreen.git
+cd grogreen
+composer install
+npm install && npm run build
 
-6. Start the development server:
-   ```
-   php artisan serve
-   ```
+cp .env.example .env
+# edit DB + UNSPLASH_ACCESS_KEY in .env
+php artisan key:generate
+php artisan migrate
+php artisan serve
+```
 
-7. Access the application in your browser at `http://localhost:8000`.
+Visit `http://localhost:8000`.
+
+## CI & Maintenance
+
+- GitHub Actions runs `composer audit`, Laravel Pint style check, and the test suite on every push/PR.
+- Dependabot keeps Composer, npm, and GitHub Actions dependencies up to date weekly.
 
 ## Contributing
 
-If you are interested in contributing to the Grogreen project, feel free to submit pull requests or open issues on the [GitHub repository](https://github.com/casndrih/grogreen). Your contributions are highly appreciated!
-
----
-
-Note: Grogreen is an ongoing project, and further developments and improvements are underway.# grogreen
+Pull requests and issues are welcome on the [GitHub repository](https://github.com/casndrih/grogreen).

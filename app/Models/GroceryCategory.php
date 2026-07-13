@@ -12,5 +12,4 @@ class GroceryCategory extends Model
     {
         return $this->hasMany(FoodProduct::class);
     }
-
 }

@@ -11,7 +11,7 @@ class VendorController extends Controller
     {
         // Logic for vendor dashboard
     }
-    
+
     public function store(Request $request)
     {
         // Logic for vendor registration

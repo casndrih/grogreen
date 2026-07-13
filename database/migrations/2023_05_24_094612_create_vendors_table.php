@@ -25,7 +25,7 @@ return new class extends Migration
             $table->string('status')->default('open');
             $table->string('reason')->nullable();
             $table->string('verification')->default('pending');
-            $table->string('description');   
+            $table->string('description');
             $table->timestamps();
         });
     }
