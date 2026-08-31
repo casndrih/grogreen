@@ -13,7 +13,7 @@
         "@babel/core": "^7.21.8",
         "@babel/preset-env": "^7.21.5",
         "autoprefixer": "^10.4.14",
-        "axios": "^1.1.2",
+        "axios": "^1.20.0",
         "babel-loader": "^9.1.2",
         "flowbite": "^1.6.5",
         "laravel-mix": "^6.0.49",
