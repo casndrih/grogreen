@@ -1,6 +1,6 @@
 # Grogreen
 
-A small multi-vendor grocery e-commerce platform built with **Laravel 10** and Tailwind CSS. It gives local Micro, Small, and Medium Enterprises (MSMEs) a place to showcase and sell their products online.
+A small multi-vendor grocery e-commerce platform built with **Laravel 12** and Tailwind CSS. It gives local Micro, Small, and Medium Enterprises (MSMEs) a place to showcase and sell their products online.
 
 Originally developed for the 2023 APEC App Challenge. This repository has been professionally maintained and hardened with security and modernization fixes.
 
@@ -19,7 +19,7 @@ Originally developed for the 2023 APEC App Challenge. This repository has been p
 
 | Area | Fix |
 |------|-----|
-| Auth middleware | `/user`, `/admin`, `/vendor` routes now require `auth` |
+| Auth middleware | user, vendor and admin routes use their corresponding authentication guards |
 | Login throttling | `/login` limited to 5 attempts/minute |
 | Logout | switched from `GET` to `POST` (CSRF-safe) |
 | Mass assignment | removed `$guarded = []` from `User`/`Vendor`/`Admin`; explicit `$fillable` including `role` |
@@ -28,7 +28,7 @@ Originally developed for the 2023 APEC App Challenge. This repository has been p
 
 ## Requirements
 
-- PHP `^8.1` (8.2+ recommended)
+- PHP `^8.4.1` (the committed dependency lock includes Symfony 8 packages)
 - Composer 2
 - MySQL 8 / MariaDB
 - Node.js 18+ (for asset build)
