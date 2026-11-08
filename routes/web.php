@@ -13,6 +13,7 @@ use App\Http\Controllers\Vendors\VendorController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [FrontendController::class, 'index'])->name('home');
+Route::get('/login', fn () => view('auth.login'))->middleware('guest')->name('login');
 Route::get('/policy', [FrontendController::class, 'policy'])->name('policy');
 Route::get('/tos', [FrontendController::class, 'tos'])->name('tos');
 Route::get('/about', [FrontendController::class, 'about'])->name('about');
@@ -21,7 +22,7 @@ Route::post('/paypal/payment', [PayPalController::class, 'createPayment'])->name
 Route::get('/paypal/payment/execute', [PayPalController::class, 'executePayment'])->name('paypal.execute');
 Route::get('/product', [ProductController::class, 'show'])->name('product.show');
 Route::post('/register', [RegisterController::class, 'register'])->name('register');
-Route::post('/login', [AuthController::class, 'login'])->middleware('throttle:5,1')->name('login');
+Route::post('/login', [AuthController::class, 'login'])->middleware('throttle:5,1')->name('login.submit');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::middleware('auth')->prefix('user')->group(function () {
