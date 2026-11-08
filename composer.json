@@ -2,10 +2,13 @@
     "name": "laravel/laravel",
     "type": "project",
     "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
+    "keywords": [
+        "framework",
+        "laravel"
+    ],
     "license": "MIT",
     "require": {
-        "php": "^8.2",
+        "php": "^8.4.1",
         "google/apiclient": "^1.1",
         "guzzlehttp/guzzle": "^7.6",
         "jwilsson/spotify-web-api-php": "^5.6",
